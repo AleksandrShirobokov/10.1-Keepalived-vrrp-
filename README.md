@@ -50,4 +50,6 @@ virtual_ipaddress {
 192.168.0.44 dev enp0s3 label enp0s3:vip  
 }   
 }   
-ва
+![Снимок экрана (181)](https://user-images.githubusercontent.com/69298696/227948648-b0f83fbc-70f5-40d5-921a-9a53c78ece37.png)
+![Снимок экрана (182)](https://user-images.githubusercontent.com/69298696/227948653-b14012f5-6070-4cde-a270-afd250ac09a3.png)
+
