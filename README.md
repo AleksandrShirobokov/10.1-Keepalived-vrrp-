@@ -10,41 +10,43 @@
 ### Конфиги MASTER & BACKUP:
 ### MASTER:
 ![Снимок экрана (178)](https://user-images.githubusercontent.com/69298696/227925521-eeaf4c7d-2192-4156-87cf-f9f8dfd430e3.png)
-vrrp_instance test {
-state MASTER
-interface enp0s3
-virtual_router_id 10
-priority 50
-advert_int 4
-authentication {
-auth_type AH
-auth_pass 0000
-}
-unicast_peer {
-192.168.0.18
-}
-virtual_ipaddress {
-192.168.0.44 dev enp0s3 label enp0s3:vip
-}
-}
 
+vrrp_instance test {  
+state MASTER  
+interface enp0s3  
+virtual_router_id 10  
+priority 50   
+advert_int 4  
+authentication {  
+auth_type AH  
+auth_pass 0000  
+}   
+unicast_peer {  
+192.168.0.18  
+}   
+virtual_ipaddress {   
+192.168.0.44 dev enp0s3 label enp0s3:vip  
+}   
+}   
+  
 
 ### BACKUP:
 ![Снимок экрана (179)](https://user-images.githubusercontent.com/69298696/227925617-09ba47a3-5857-47be-b9fa-0574974f510d.png)
-vrrp_instance failover_test {
-state BACKUP
-interface enp0s3
-virtual_router_id 10
-priority 50
-advert_int 4
-authentication {
-auth_type AH
-auth_pass 0000
-}
-unicast_peer {
-192.168.0.11
-}
-virtual_ipaddress {
-192.168.0.44 dev enp0s3 label enp0s3:vip
-}
-}
+
+vrrp_instance failover_test { 
+state BACKUP  
+interface enp0s3  
+virtual_router_id 10  
+priority 50 
+advert_int 4  
+authentication {  
+auth_type AH  
+auth_pass 0000  
+} 
+unicast_peer {  
+192.168.0.11  
+} 
+virtual_ipaddress { 
+192.168.0.44 dev enp0s3 label enp0s3:vip  
+}   
+}   
