@@ -2,14 +2,14 @@
 # Александр Широбоков
 ## Задание 1. Разверните топологию из лекции и выполните установку и настройку сервиса Keepalived.
 ### Статус сервиса MASTER:
-![Снимок экрана (175)](https://user-images.githubusercontent.com/69298696/227924066-0d37fc50-9c99-4b06-8c66-2c0be8ba753f.png)
+![Снимок экранГа (67)](https://user-images.githubusercontent.com/69298696/228101851-e94c9948-d4de-4b6c-826a-e7eefd04b4d9.png)
 ### Статус сервиса BACKUP:
-![Снимок экрана (176)](https://user-images.githubusercontent.com/69298696/227924278-735af708-55d1-485f-aa4b-0a91b0afb8fe.png)
+![Снимок экрана (67)](https://user-images.githubusercontent.com/69298696/228101982-5f3fb008-0ed7-4035-bd9b-63cf33296aa6.png)
 ### Работающая сеть на MASTER:
-![Снимок экрана (177)](https://user-images.githubusercontent.com/69298696/227924791-ced5fc61-a235-4322-8f51-2ceaccb8c7bc.png)
-### Конфиги MASTER & BACKUP:
+![Снимок экрана (68)](https://user-images.githubusercontent.com/69298696/228102319-c41ff75c-13b5-41c7-bc44-858a905b4753.png)
+### Конфиги MASTER & BACKUP(аутентификацию указываю через PASS, чтобы пропала ошибка "initial state master is incompatible with ah authentication - clearing"):
 ### MASTER:
-![Снимок экрана (178)](https://user-images.githubusercontent.com/69298696/227925521-eeaf4c7d-2192-4156-87cf-f9f8dfd430e3.png)
+![Снимок экрана (69)](https://user-images.githubusercontent.com/69298696/228102462-ad4147de-9588-4d29-9632-3a9e1be1b089.png)
 
 ```
 vrrp_instance test {  
@@ -19,11 +19,11 @@ virtual_router_id 10
 priority 50   
 advert_int 4  
 authentication {  
-auth_type AH  
-auth_pass 0000  
+auth_type PASS  
+auth_pass 12345  
 }   
 unicast_peer {  
-192.168.0.18  
+192.168.0.19  
 }   
 virtual_ipaddress {   
 192.168.0.44 dev enp0s3 label enp0s3:vip  
@@ -31,9 +31,8 @@ virtual_ipaddress {
 }
 ``` 
   
-
 ### BACKUP:
-![Снимок экрана (179)](https://user-images.githubusercontent.com/69298696/227925617-09ba47a3-5857-47be-b9fa-0574974f510d.png)
+![Снимок экрана (70)](https://user-images.githubusercontent.com/69298696/228102591-51645338-4865-4cef-80ae-f69a91313161.png)
 
 ```
 vrrp_instance failover_test { 
@@ -43,11 +42,11 @@ virtual_router_id 10
 priority 50 
 advert_int 4  
 authentication {  
-auth_type AH  
-auth_pass 0000  
+auth_type PASS  
+auth_pass 12345  
 } 
 unicast_peer {  
-192.168.0.11  
+192.168.0.15  
 } 
 virtual_ipaddress { 
 192.168.0.44 dev enp0s3 label enp0s3:vip  
