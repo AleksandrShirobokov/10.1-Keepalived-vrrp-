@@ -11,6 +11,7 @@
 ### MASTER:
 ![Снимок экрана (178)](https://user-images.githubusercontent.com/69298696/227925521-eeaf4c7d-2192-4156-87cf-f9f8dfd430e3.png)
 
+```
 vrrp_instance test {  
 state MASTER  
 interface enp0s3  
@@ -27,12 +28,14 @@ unicast_peer {
 virtual_ipaddress {   
 192.168.0.44 dev enp0s3 label enp0s3:vip  
 }   
-}   
+}
+``` 
   
 
 ### BACKUP:
 ![Снимок экрана (179)](https://user-images.githubusercontent.com/69298696/227925617-09ba47a3-5857-47be-b9fa-0574974f510d.png)
 
+```
 vrrp_instance failover_test { 
 state BACKUP  
 interface enp0s3  
@@ -50,6 +53,7 @@ virtual_ipaddress {
 192.168.0.44 dev enp0s3 label enp0s3:vip  
 }   
 }   
+```
 
 ## Задание 2. Проведите тестирование работы ноды, когда один из интерфейсов выключен.
 ### Устанавливаю Wireshark на третью машину и включаю отслеживание трафика, хост находится на .44 адресе, пингую:
